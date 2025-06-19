@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fun Kids' Hoodie - Stylish Wear</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        background-color: #f7f7f7;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      img {
+        width: 30%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin: 1rem 0;
+      }
+      .price {
+        font-size: 1.5rem;
+        color: #f57c00;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.7rem 1.5rem;
+        background: #000;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 1rem;
+      }
+      .btn:hover {
+        background: #f0a500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="../images/Fun Kids' Hoodie.jfif" alt="Fun Kids' Hoodie" />
+      <h1>Fun Kids' Hoodie</h1>
+      <p>
+        Brighten your child's wardrobe with our Fun Kids' Hoodie, featuring
+        playful designs and cozy fabric that keeps them warm and happy.
+      </p>
+      <p class="price">₹799</p>
+      <a href="../successes.html" class="btn">Buy Now</a><br /><br />
+      <a href="../index.html" class="btn">← Back to Home</a>
+    </div>
+    <script>
+      function addToCart() {
+        const item = {
+          name: document.getElementById("productName").textContent,
+          price: 999,
+          image: "images/Fun Kids' Hoodie.jfif",
+        };
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(item);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Redirect after adding to cart
+        window.location.href = "successes.html";
+      }
+    </script>
+  </body>
+</html>
