@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylish Wear</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #000;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+        color: #fff;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        color: #f0a500;
+      }
+
+      section {
+        min-height: 100vh;
+        padding: 6rem 2rem 2rem;
+      }
+
+      .hero {
+        background: url("videos/853800-hd_1920_1080_25fps.mp4") no-repeat center
+          center/cover;
+        color: white;
+        display: flex;
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .bg-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1; /* ensures it's above the video */
+        color: white;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        padding: 2rem;
+        background: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* Optional: dark background for readability */
+        border-radius: 10px;
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin-bottom: 1rem;
+      }
+
+      .btn {
+        padding: 0.7rem 1.5rem;
+        background: #fff;
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s ease;
+      }
+
+      .btn:hover {
+        background: #f0a500;
+        color: white;
+      }
+
+      .products,
+      .men-clothes,
+      .women-clothes,
+      .kids-clothes {
+        background: #f9f9f9;
+      }
+
+      .products h2,
+      .men-clothes h2,
+      .women-clothes h2,
+      .kids-clothes h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: #333; /* Darker color for headings */
+      }
+
+      .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .product {
+        background: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .product:hover {
+        transform: translateY(-5px);
+      }
+
+      .product img {
+        width: 100%;
+        height: 300px; /* Fixed height for consistency */
+        object-fit: cover; /* Ensures images cover the area */
+        border-radius: 20px;
+      }
+
+      .product h3 {
+        margin: 1rem 0 0.5rem;
+        color: #555;
+      }
+
+      .product p {
+        color: #777;
+        font-weight: bold;
+      }
+
+      .product .btn {
+        background: black;
+        color: white;
+        margin-top: 0.5rem;
+        display: inline-block;
+      }
+
+      .product .btn:hover {
+        background: #f0a500;
+        color: white;
+      }
+
+      .about {
+        background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+        color: #333;
+      }
+
+      .about h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: #880e4f;
+      }
+
+      .about-content {
+        max-width: 900px;
+        margin: auto;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: center;
+      }
+
+      .contact {
+        background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+        color: #004d40;
+      }
+
+      .contact h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+
+      .contact-content {
+        max-width: 900px;
+        margin: auto;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: center;
+      }
+
+      .contact-info {
+        margin-top: 1.5rem;
+        font-size: 1rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: #000;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          display: flex;
+          flex-direction: column;
+          align-items: center; /* Center nav items in column layout */
+          margin-top: 1rem; /* Space between logo and nav on small screens */
+        }
+        nav a {
+          margin: 0.5rem 0; /* More vertical space for nav items */
+        }
+        header {
+          flex-direction: column; /* Stack logo and nav vertically */
+          padding: 1rem;
+        }
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+        .hero p {
+          font-size: 1rem;
+        }
+        .product {
+          width: 80%; /* Make products wider on smaller screens */
+        }
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.7rem 1.5rem;
+        background: #000;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 1rem;
+      }
+
+      .btn:hover {
+        background: #f0a500;
+      }
+
+      .cart-status {
+        text-align: right;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        color: green;
+      }
+
+      /* Colorful Add to Cart button */
+      .add-to-cart {
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 0.7rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-top: 10px;
+      }
+
+      .add-to-cart:hover {
+        background: linear-gradient(to right, #ff4b2b, #ff416c);
+      }
+      .products {
+        background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      }
+
+      .men-clothes {
+        background: linear-gradient(135deg, #e3ffe7, #d9e7ff);
+      }
+
+      .women-clothes {
+        background: linear-gradient(135deg, #ffe0f7, #ffdede);
+      }
+
+      .kids-clothes {
+        background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      }
+
+      .about {
+        background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+        color: #333;
+      }
+
+      .contact {
+        background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+        color: #004d40;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Stylish Wear</h1>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#products">All Products</a>
+        <a href="#men-clothes">Men</a>
+        <a href="#women-clothes">Women</a>
+        <a href="#kids-clothes">Kids</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="cart.html"
+          >🛒Cart <span id="cart-count" class="cart-count">0</span></a
+        >
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="videos/clothes.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-content">
+        <h2>Welcome to Stylish Wear</h2>
+        <p>
+          Discover modern clothing collections designed for comfort and style.
+        </p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <h2>✨Our Latest Collection✨</h2>
+      <div class="product-list">
+        <div class="product">
+          <img src="images/Classic_Jacket.jfif" alt="Stylish Jacket" />
+          <h3>Classic Jacket</h3>
+          <p>₹999</p>
+          <a href="templates/Classic_Jacket.html" class="btn">View Details</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Classic Jacket', 999,'images/Classic_Jacket.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/Casual T-Shirt.jfif" alt="Comfortable T-Shirt" />
+          <h3>Casual T-Shirt</h3>
+          <p>₹400</p>
+          <a href="templates/Casual T-Shirt.html" class="btn">View Details</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Casual T-Shirt', 999,'images/Casual T-Shirt.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/Cozy Hoodie.jfif" alt="Warm Hoodie" />
+          <h3>Cozy Hoodie</h3>
+          <p>₹600</p>
+          <a href="templates/cozy Hoodie.html" class="btn">View Details</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Cozy Hoodie', 999,'images/Cozy Hoodie.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
+
+    ---
+
+    <section class="men-clothes" id="men-clothes">
+      <h2>👔Men's Collection</h2>
+      <div class="product-list">
+        <div class="product">
+          <img src="images/Men's Denim Jacket.jfif" alt="Men's Denim Jacket" />
+          <h3>Men's Denim Jacket</h3>
+          <p>₹590</p>
+          <a href="templates/men_jacket.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Men\'s Denim Jacket', 999,'images/Men\'s Denim Jacket.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/Men's Formal Shirt.jfif" alt="Men's Formal Shirt" />
+          <h3>Men's Formal Shirt</h3>
+          <p>₹450</p>
+          <a href="templates/men_shirt.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Men\'s Formal Shirt', 999,'images/Men\'s Formal Shirt.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img
+            src="images/Men's Cargo Pants.jfif"
+            alt="Men's Casual Trousers"
+          />
+          <h3>Men's Cargo Pants</h3>
+          <p>₹700</p>
+          <a href="templates/men_trousers.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Men\'s Cargo Pants', 999,'images/Men\'s Cargo Pants.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/Men's Tracksuit.jfif" alt="Men's Sports Tracksuit" />
+          <h3>Men's Tracksuit</h3>
+          <p>₹990</p>
+          <a href="templates/men_tracksuit.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Men\'s Tracksuit', 999,'images/Men\'s Tracksuit.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
+
+    ---
+
+    <section class="women-clothes" id="women-clothes">
+      <h2>👗Women's Collection</h2>
+      <div class="product-list">
+        <div class="product">
+          <img
+            src="images/Floral Summer Dress.jfif"
+            alt="Women's Summer Dress"
+          />
+          <h3>Floral Summer Dress</h3>
+          <p>₹999</p>
+          <a href="templates/women_dress.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Floral Summer Dress', 999,'images/Floral Summer Dress.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/Elegant Blouse.jfif" alt="Women's Stylish Top" />
+          <h3>Elegant Blouse</h3>
+          <p>₹500</p>
+          <a href="templates/women_blouse.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Elegant Blouse', 999,'images/Elegant Blouse.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/High-Waist Jeans.jfif" alt="Women's Jeans" />
+          <h3>High-Waist Jeans</h3>
+          <p>₹750</p>
+          <a href="templates/women_jeans.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('High-Waist Jeans', 999,'images/High-Waist Jeans.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/Soft Cardigan.jfif" alt="Women's Cardigan" />
+          <h3>Soft Cardigan</h3>
+          <p>₹500</p>
+          <a href="templates/women_cardigan.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Soft Cardigan', 999,'images/Soft Cardigan.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
+
+    ---
+
+    <section class="kids-clothes" id="kids-clothes">
+      <h2>🧒Kids' Collection</h2>
+      <div class="product-list">
+        <div class="product">
+          <img src="images/Cute Animal T-Shirt.jfif" alt="Kids' T-Shirt" />
+          <h3>Cute Animal T-Shirt</h3>
+          <p>₹499</p>
+          <a href="templates/kidsanimal_tshirt.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Cute Animal T-Shirt', 999,'images/Cute Animal T-Shirt.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/Kids' Comfy Jeans.jfif" alt="Kids' Jeans" />
+          <h3>Kids' Comfy Jeans</h3>
+          <p>₹699</p>
+          <a href="templates/kids_jeans.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Kids\' Comfy Jeans', 999,'images/Kids\' Comfy Jeans.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/Fun Kids' Hoodie.jfif" alt="Kids' Hoodie" />
+          <h3>Fun Kids' Hoodie</h3>
+          <p>₹899</p>
+          <a href="templates/kids_hoodie.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Fun Kids\' Hoodie', 999,'images/Fun Kids\' Hoodie.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          <img src="images/Baby Romper.jfif " alt="Baby Romper" />
+          <h3>Adorable Baby Romper</h3>
+          <p>₹599</p>
+          <a href="templates/baby_romper.html" class="btn">Buy Now</a>
+          <button
+            class="add-to-cart"
+            onclick="addToCart('Adorable Baby Romper', 999,'images/Baby Romper.jfif')"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
+
+    ---
+
+    <section class="about" id="about">
+      <h2>About Us</h2>
+      <div class="about-content">
+        <p>
+          Stylish Wear is your destination for premium and affordable clothing.
+          We specialize in modern, comfortable, and sustainable fashion.
+        </p>
+        <p>
+          Our mission is to make everyday style accessible to everyone. With an
+          eye for trends and a passion for comfort, our collections are made
+          with love and care. Whether you’re dressing up for an event or
+          lounging at home, we’ve got you covered.
+        </p>
+      </div>
+    </section>
+
+    ---
+
+    <section class="contact" id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-content">
+        <p>
+          Got questions or feedback? We'd love to hear from you. Whether it's
+          about your order, products, or suggestions — we're here to help!
+        </p>
+        <div class="contact-info">
+          📧 Email: <strong>support@stylishwear.com</strong><br />
+          📞 Phone: <strong>+91 8087560667</strong><br />
+          📍 Address: 123 Fashion Street, Mumbai, India
+        </div>
+      </div>
+    </section>
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      function addToCart(name, price, image) {
+        cart.push({ name, price, image });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+      }
+
+      function updateCartCount() {
+        const count = cart.length;
+        document.getElementById("cart-count").innerText = count;
+      }
+
+      // Update count on load
+      window.onload = updateCartCount;
+    </script>
+
+    ---
+
+    <footer>&copy; 2025 Stylish Wear. All rights reserved.</footer>
+  </body>
+</html>
