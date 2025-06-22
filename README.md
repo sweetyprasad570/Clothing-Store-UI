@@ -12,8 +12,8 @@ Stylish Wear is a modern, responsive e-commerce front-end template designed for 
 * **Smooth Scrolling:** Navigating between sections is smooth and user-friendly.
 * **About Us & Contact Sections:** Provides essential information about the brand and ways to get in touch.
 * **Clean & Modern UI:** Utilizes CSS gradients and shadows for an appealing aesthetic.
-* Go Demo Live :
-https://sweetyprasad570.github.io/Clothing-Store-UI/
+🌐 Live Demo
+  (Clothing Store Live) https://sweetyprasad570.github.io/Clothing-Store-UI/
 ## 🚀 Technologies Used
 
 * **HTML5:** For the core structure and content of the web page.
